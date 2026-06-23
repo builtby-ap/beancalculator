@@ -1,0 +1,26 @@
+[
+  {
+    "id": "b1",
+    "name": "ပဲတီစိမ်း",
+    "standardWeight": 56.25,
+    "createdAt": "2026-06-22T00:00:00.000Z"
+  },
+  {
+    "id": "b2",
+    "name": "ပဲကြီး",
+    "standardWeight": 55.25,
+    "createdAt": "2026-06-22T00:00:00.000Z"
+  },
+  {
+    "id": "b4",
+    "name": "ပဲစင်းငုံ",
+    "standardWeight": 60,
+    "createdAt": "2026-06-22T00:00:00.000Z"
+  },
+  {
+    "id": "bfcba9a2-ea03-4672-93ee-07a1eccc2b43",
+    "name": "မတ်ပဲ",
+    "standardWeight": 60,
+    "createdAt": "2026-06-22T17:43:29.385Z"
+  }
+]

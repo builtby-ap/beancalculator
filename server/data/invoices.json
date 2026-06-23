@@ -1,0 +1,347 @@
+[
+  {
+    "invoice_id": "INV-1782148922227-75C2",
+    "date": "2026-06-22T17:22:02.228Z",
+    "date_formatted": "၂၂/၆/၂၀၂၆",
+    "farmer": {
+      "name": "Asia",
+      "label": "တောင်သူအမည်"
+    },
+    "bean": {
+      "id": "b1",
+      "name": "ပဲတီစိမ်း",
+      "label": "ပဲအမျိုးအစား",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်"
+    },
+    "weight": {
+      "label": "အလေးချိန် အကျဉ်းချုပ်",
+      "total_bags": 100,
+      "total_bags_label": "အိတ်စုစုပေါင်း",
+      "viss_per_bag": 30.5,
+      "viss_per_bag_label": "တစ်အိတ်လျှင် ပိဿာ",
+      "bags_viss": 3050,
+      "bags_viss_label": "အိတ်မှ ပိဿာ",
+      "extra_viss": 0,
+      "extra_viss_label": "အပို ပိဿာ",
+      "total_viss": 3050,
+      "total_viss_label": "စုစုပေါင်း ပိဿာ"
+    },
+    "pricing": {
+      "price": 270000,
+      "price_label": "ဈေးနှုန်း",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်",
+      "formula": "3050 × 270000 ÷ 56.25",
+      "base_amount": 14640000,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ"
+    },
+    "deductions": {
+      "label": "နုတ်ယူငွေများ",
+      "items": [
+        {
+          "key": "labor_fee",
+          "label": "အလုပ်ခ (တစ်အိတ်လျှင်) (200 × 100)",
+          "amount": 20000
+        },
+        {
+          "key": "bag_cost",
+          "label": "အိတ်ခ (တစ်အိတ်လျှင်) (410 × 100)",
+          "amount": 41000
+        },
+        {
+          "key": "service_fee",
+          "label": "ပွဲခ (ရာခိုင်နှုန်း) (1% × 14640000)",
+          "amount": 146400
+        }
+      ],
+      "total": 207400,
+      "total_label": "နုတ်ယူငွေ စုစုပေါင်း"
+    },
+    "summary": {
+      "base_amount": 14640000,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ",
+      "total_deductions": 207400,
+      "total_deductions_label": "နုတ်ယူငွေ စုစုပေါင်း",
+      "final_amount": 14432600,
+      "final_amount_label": "တောင်သူအားပေးချေမည့်ငွေ"
+    }
+  },
+  {
+    "invoice_id": "INV-1782148979102-3A94",
+    "date": "2026-06-22T17:22:59.102Z",
+    "date_formatted": "၂၂/၆/၂၀၂၆",
+    "farmer": {
+      "name": "ဦးမြင့်ဦး",
+      "label": "တောင်သူအမည်"
+    },
+    "bean": {
+      "id": "b1",
+      "name": "ပဲတီစိမ်း",
+      "label": "ပဲအမျိုးအစား",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်"
+    },
+    "weight": {
+      "label": "အလေးချိန် အကျဉ်းချုပ်",
+      "total_bags": 100,
+      "total_bags_label": "အိတ်စုစုပေါင်း",
+      "viss_per_bag": 30.5,
+      "viss_per_bag_label": "တစ်အိတ်လျှင် ပိဿာ",
+      "bags_viss": 3050,
+      "bags_viss_label": "အိတ်မှ ပိဿာ",
+      "extra_viss": 0,
+      "extra_viss_label": "အပို ပိဿာ",
+      "total_viss": 3050,
+      "total_viss_label": "စုစုပေါင်း ပိဿာ"
+    },
+    "pricing": {
+      "price": 270000,
+      "price_label": "ဈေးနှုန်း",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်",
+      "formula": "3050 × 270000 ÷ 56.25",
+      "base_amount": 14640000,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ"
+    },
+    "deductions": {
+      "label": "နုတ်ယူငွေများ",
+      "items": [
+        {
+          "key": "labor_fee",
+          "label": "အလုပ်ခ (တစ်အိတ်လျှင်) (200 × 100)",
+          "amount": 20000
+        },
+        {
+          "key": "bag_cost",
+          "label": "အိတ်ခ (တစ်အိတ်လျှင်) (410 × 100)",
+          "amount": 41000
+        },
+        {
+          "key": "service_fee",
+          "label": "ပွဲခ (ရာခိုင်နှုန်း) (1% × 14640000)",
+          "amount": 146400
+        }
+      ],
+      "total": 207400,
+      "total_label": "နုတ်ယူငွေ စုစုပေါင်း"
+    },
+    "summary": {
+      "base_amount": 14640000,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ",
+      "total_deductions": 207400,
+      "total_deductions_label": "နုတ်ယူငွေ စုစုပေါင်း",
+      "final_amount": 14432600,
+      "final_amount_label": "တောင်သူအားပေးချေမည့်ငွေ"
+    }
+  },
+  {
+    "invoice_id": "INV-1782149046172-100A",
+    "date": "2026-06-22T17:24:06.173Z",
+    "date_formatted": "၂၂/၆/၂၀၂၆",
+    "farmer": {
+      "name": "ဦးမြင့်ဦး",
+      "label": "တောင်သူအမည်"
+    },
+    "bean": {
+      "id": "b1",
+      "name": "ပဲတီစိမ်း",
+      "label": "ပဲအမျိုးအစား",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်"
+    },
+    "weight": {
+      "label": "အလေးချိန် အကျဉ်းချုပ်",
+      "total_bags": 100,
+      "total_bags_label": "အိတ်စုစုပေါင်း",
+      "viss_per_bag": 30.5,
+      "viss_per_bag_label": "တစ်အိတ်လျှင် ပိဿာ",
+      "bags_viss": 3050,
+      "bags_viss_label": "အိတ်မှ ပိဿာ",
+      "extra_viss": 0,
+      "extra_viss_label": "အပို ပိဿာ",
+      "total_viss": 3050,
+      "total_viss_label": "စုစုပေါင်း ပိဿာ"
+    },
+    "pricing": {
+      "price": 270000,
+      "price_label": "ဈေးနှုန်း",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်",
+      "formula": "3050 × 270000 ÷ 56.25",
+      "base_amount": 14640000,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ"
+    },
+    "deductions": {
+      "label": "နုတ်ယူငွေများ",
+      "items": [
+        {
+          "key": "labor_fee",
+          "label": "အလုပ်ခ (တစ်အိတ်လျှင်) (200 × 100)",
+          "amount": 20000
+        },
+        {
+          "key": "bag_cost",
+          "label": "အိတ်ခ (တစ်အိတ်လျှင်) (410 × 100)",
+          "amount": 41000
+        },
+        {
+          "key": "service_fee",
+          "label": "ပွဲခ (ရာခိုင်နှုန်း) (1% × 14640000)",
+          "amount": 146400
+        },
+        {
+          "key": "other_fee",
+          "label": "ေဆးအုပ်ခ (40 × 100)",
+          "amount": 4000
+        }
+      ],
+      "total": 211400,
+      "total_label": "နုတ်ယူငွေ စုစုပေါင်း"
+    },
+    "summary": {
+      "base_amount": 14640000,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ",
+      "total_deductions": 211400,
+      "total_deductions_label": "နုတ်ယူငွေ စုစုပေါင်း",
+      "final_amount": 14428600,
+      "final_amount_label": "တောင်သူအားပေးချေမည့်ငွေ"
+    }
+  },
+  {
+    "invoice_id": "INV-1782149542717-AB9C",
+    "date": "2026-06-22T17:32:22.717Z",
+    "date_formatted": "၂၃/၆/၂၀၂၆",
+    "farmer": {
+      "name": "U Maung",
+      "label": "တောင်သူအမည်"
+    },
+    "bean": {
+      "id": "b1",
+      "name": "ပဲတီစိမ်း",
+      "label": "ပဲအမျိုးအစား",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်"
+    },
+    "weight": {
+      "label": "အလေးချိန် အကျဉ်းချုပ်",
+      "total_bags": 100,
+      "total_bags_label": "အိတ်စုစုပေါင်း",
+      "viss_per_bag": 30.5,
+      "viss_per_bag_label": "တစ်အိတ်လျှင် ပိဿာ",
+      "bags_viss": 3050,
+      "bags_viss_label": "အိတ်မှ ပိဿာ",
+      "extra_viss": 0,
+      "extra_viss_label": "အပို ပိဿာ",
+      "total_viss": 3050,
+      "total_viss_label": "စုစုပေါင်း ပိဿာ"
+    },
+    "pricing": {
+      "price": 269981,
+      "price_label": "ဈေးနှုန်း",
+      "standard_weight": 56.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်",
+      "formula": "3050 × 269981 ÷ 56.25",
+      "base_amount": 14638970,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ"
+    },
+    "deductions": {
+      "label": "နုတ်ယူငွေများ",
+      "items": [
+        {
+          "key": "labor_fee",
+          "label": "အလုပ်ခ (တစ်အိတ်လျှင်) (200 × 100)",
+          "amount": 20000
+        },
+        {
+          "key": "bag_cost",
+          "label": "အိတ်ခ (တစ်အိတ်လျှင်) (400 × 100)",
+          "amount": 40000
+        },
+        {
+          "key": "service_fee",
+          "label": "ပွဲခ (ရာခိုင်နှုန်း) (1% × 14638970)",
+          "amount": 146390
+        }
+      ],
+      "total": 206390,
+      "total_label": "နုတ်ယူငွေ စုစုပေါင်း"
+    },
+    "summary": {
+      "base_amount": 14638970,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ",
+      "total_deductions": 206390,
+      "total_deductions_label": "နုတ်ယူငွေ စုစုပေါင်း",
+      "final_amount": 14432580,
+      "final_amount_label": "တောင်သူအားပေးချေမည့်ငွေ"
+    }
+  },
+  {
+    "invoice_id": "INV-1782150164703-3539",
+    "date": "2026-06-22T17:42:44.703Z",
+    "date_formatted": "၂၃/၆/၂၀၂၆",
+    "farmer": {
+      "name": "U Hla",
+      "label": "တောင်သူအမည်"
+    },
+    "bean": {
+      "id": "b2",
+      "name": "ပဲကြီး",
+      "label": "ပဲအမျိုးအစား",
+      "standard_weight": 55.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်"
+    },
+    "weight": {
+      "label": "အလေးချိန် အကျဉ်းချုပ်",
+      "total_bags": 50,
+      "total_bags_label": "အိတ်စုစုပေါင်း",
+      "viss_per_bag": 30,
+      "viss_per_bag_label": "တစ်အိတ်လျှင် ပိဿာ",
+      "bags_viss": 1500,
+      "bags_viss_label": "အိတ်မှ ပိဿာ",
+      "extra_viss": 23,
+      "extra_viss_label": "အပို ပိဿာ",
+      "total_viss": 1523,
+      "total_viss_label": "စုစုပေါင်း ပိဿာ"
+    },
+    "pricing": {
+      "price": 550000,
+      "price_label": "ဈေးနှုန်း",
+      "standard_weight": 55.25,
+      "standard_weight_label": "စံချိန်တန်း အလေးချိန်",
+      "formula": "1523 × 550000 ÷ 55.25",
+      "base_amount": 15161086,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ"
+    },
+    "deductions": {
+      "label": "နုတ်ယူငွေများ",
+      "items": [
+        {
+          "key": "labor_fee",
+          "label": "အလုပ်ခ (တစ်အိတ်လျှင်) (200 × 50)",
+          "amount": 10000
+        },
+        {
+          "key": "bag_cost",
+          "label": "အိတ်ခ (တစ်အိတ်လျှင်) (400 × 50)",
+          "amount": 20000
+        },
+        {
+          "key": "service_fee",
+          "label": "ပွဲခ (ရာခိုင်နှုန်း) (0.5% × 15161086)",
+          "amount": 75805
+        }
+      ],
+      "total": 105805,
+      "total_label": "နုတ်ယူငွေ စုစုပေါင်း"
+    },
+    "summary": {
+      "base_amount": 15161086,
+      "base_amount_label": "အခြေခံ ငွေပမာဏ",
+      "total_deductions": 105805,
+      "total_deductions_label": "နုတ်ယူငွေ စုစုပေါင်း",
+      "final_amount": 15055281,
+      "final_amount_label": "တောင်သူအားပေးချေမည့်ငွေ"
+    }
+  }
+]

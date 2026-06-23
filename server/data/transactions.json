@@ -1,0 +1,36 @@
+[
+  {
+    "id": "991ce7af-daab-4d42-ae73-776cb891dc1b",
+    "farmerName": "U Maung",
+    "beanTypeId": "b1",
+    "beanName": "ပဲတီစိမ်း",
+    "numberOfBags": 100,
+    "vissPerBag": 30.5,
+    "bagsViss": 3050,
+    "extraViss": 0,
+    "totalViss": 3050,
+    "price": 270000,
+    "standardWeight": 56.25,
+    "baseAmount": 14640000,
+    "deductions": {
+      "laborFee": {
+        "perBag": 200,
+        "total": 20000
+      },
+      "bagCost": {
+        "perBag": 400,
+        "total": 40000
+      },
+      "serviceFee": {
+        "percent": 1,
+        "total": 146400
+      },
+      "otherFees": [],
+      "totalDeductions": 206400
+    },
+    "finalTotal": 14433600,
+    "paidAmount": 0,
+    "status": "unpaid",
+    "createdAt": "2026-06-22T17:34:14.468Z"
+  }
+]
