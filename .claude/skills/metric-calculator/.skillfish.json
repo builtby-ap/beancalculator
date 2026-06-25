@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "metric-calculator",
+  "owner": "jeremylongshore",
+  "repo": "claude-code-plugins-plus-skills",
+  "path": "skills/12-data-analytics/metric-calculator",
+  "branch": "main",
+  "sha": "1727d5bf315a5bb2f2ae718f9933510d4986d842",
+  "source": "manual"
+}
