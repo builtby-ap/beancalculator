@@ -4,18 +4,8 @@ import jsPDF from "jspdf";
 
 const fmt = (n) => Number(n).toLocaleString("my-MM");
 
-export default function InvoiceSlip({ invoice, onClose }) {
+export default function InvoicePrintView({ invoiceNo, date, farmerName, result, onClose }) {
   const slipRef = useRef(null);
-
-  const farmerName = invoice.farmer?.name || "";
-  const invoiceNo = invoice.invoice_id;
-  const date = invoice.date_formatted;
-  const beanRows = invoice.bean_rows || [];
-  const deductions = invoice.deductions?.items || [];
-  const totalViss = invoice.weight?.total_viss || 0;
-  const totalValue = invoice.pricing?.base_amount || invoice.summary?.base_amount || 0;
-  const totalDeductions = invoice.deductions?.total || 0;
-  const finalTotal = invoice.summary?.final_amount || 0;
 
   const handlePrint = () => {
     const printWindow = window.open("", "_blank");
@@ -73,7 +63,7 @@ export default function InvoiceSlip({ invoice, onClose }) {
               </tr>
             </thead>
             <tbody>
-              ${beanRows.map((row, i) => `
+              ${result.beanRows.map((row, i) => `
                 <tr>
                   <td class="center">${i + 1}</td>
                   <td>${row.beanName || ""}</td>
@@ -89,21 +79,21 @@ export default function InvoiceSlip({ invoice, onClose }) {
           </table>
 
           <div class="section-title">အကျဉ်းချုပ်</div>
-          <div class="summary-row"><span>စုစုပေါင်း ပိဿာ</span><span><strong>${fmt(totalViss)} ပိဿာ</strong></span></div>
-          <div class="summary-row"><span>စုစုပေါင်းတန်ဖိုး</span><span><strong>${fmt(totalValue)} ကျပ်</strong></span></div>
+          <div class="summary-row"><span>စုစုပေါင်း ပိဿာ</span><span><strong>${fmt(result.totalViss)} ပိဿာ</strong></span></div>
+          <div class="summary-row"><span>စုစုပေါင်းတန်ဖိုး</span><span><strong>${fmt(result.totalValue)} ကျပ်</strong></span></div>
 
-          ${deductions.length > 0 ? `
+          ${result.deductions.length > 0 ? `
           <div class="section-title">ဖြတ်တောက်ငွေများ</div>
-          ${deductions.map(d => `
-            <div class="summary-row"><span>${d.label}</span><span>-${fmt(d.total)} ကျပ်</span></div>
+          ${result.deductions.map(d => `
+            <div class="summary-row"><span>${d.label} (${d.formula})</span><span>-${fmt(d.total)} ကျပ်</span></div>
           `).join("")}
           <div class="line"></div>
-          <div class="summary-row" style="font-weight:700;color:#b91c1c;"><span>စုစုပေါင်း ဖြတ်တောက်ငွေ</span><span>${fmt(totalDeductions)} ကျပ်</span></div>
+          <div class="summary-row" style="font-weight:700;color:#b91c1c;"><span>စုစုပေါင်း ဖြတ်တောက်ငွေ</span><span>${fmt(result.totalDeductions)} ကျပ်</span></div>
           ` : ""}
 
           <div class="final-box">
             <div style="font-size:13px;color:#666;">တောင်သူရရှိမည့်ငွေ</div>
-            <div class="amount">${fmt(finalTotal)} <span style="font-size:14px;">ကျပ်</span></div>
+            <div class="amount">${fmt(result.finalTotal)} <span style="font-size:14px;">ကျပ်</span></div>
           </div>
 
           <div class="footer">
@@ -133,7 +123,7 @@ export default function InvoiceSlip({ invoice, onClose }) {
     <div className="space-y-4">
       {/* Buttons */}
       <div className="flex gap-3 justify-between items-center">
-        <h3 className="text-lg font-bold">ဘောင်ချာ</h3>
+        <h3 className="text-lg font-bold">ကြိုတင်ကြည့်ရှု</h3>
         <div className="flex gap-2">
           <button onClick={handlePrint} className="flex items-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition text-sm font-medium">
             🖨️ Print
@@ -149,7 +139,7 @@ export default function InvoiceSlip({ invoice, onClose }) {
         </div>
       </div>
 
-      {/* Printable slip — same layout as InvoicePrintView */}
+      {/* Printable slip */}
       <div ref={slipRef} className="bg-white border-2 border-gray-800 p-6 max-w-[800px] mx-auto">
         {/* Header */}
         <div className="text-center border-b-2 border-gray-800 pb-3 mb-4">
@@ -181,7 +171,7 @@ export default function InvoiceSlip({ invoice, onClose }) {
             </tr>
           </thead>
           <tbody>
-            {beanRows.map((row, i) => (
+            {result.beanRows.map((row, i) => (
               <tr key={i}>
                 <td className="border border-gray-300 px-2 py-1.5 text-center text-xs">{i + 1}</td>
                 <td className="border border-gray-300 px-2 py-1.5">{row.beanName || ""}</td>
@@ -201,25 +191,25 @@ export default function InvoiceSlip({ invoice, onClose }) {
           အကျဉ်းချုပ်
         </div>
         <div className="space-y-1 text-sm mb-2">
-          <div className="flex justify-between"><span className="text-gray-500">စုစုပေါင်း ပိဿာ</span><span className="font-semibold">{fmt(totalViss)} ပိဿာ</span></div>
-          <div className="flex justify-between"><span className="text-gray-500">စုစုပေါင်းတန်ဖိုး</span><span className="font-bold text-emerald-700">{fmt(totalValue)} ကျပ်</span></div>
+          <div className="flex justify-between"><span className="text-gray-500">စုစုပေါင်း ပိဿာ</span><span className="font-semibold">{fmt(result.totalViss)} ပိဿာ</span></div>
+          <div className="flex justify-between"><span className="text-gray-500">စုစုပေါင်းတန်ဖိုး</span><span className="font-bold text-emerald-700">{fmt(result.totalValue)} ကျပ်</span></div>
         </div>
 
-        {deductions.length > 0 && (
+        {result.deductions.length > 0 && (
           <>
             <div className="bg-gray-100 px-3 py-1.5 text-sm font-semibold border-l-4 border-gray-800 mb-2">
               ဖြတ်တောက်ငွေများ
             </div>
-            {deductions.map((d, i) => (
+            {result.deductions.map((d, i) => (
               <div key={i} className="flex justify-between text-sm py-1">
-                <span className="text-gray-500">{d.label}</span>
+                <span className="text-gray-500">{d.label} <span className="text-xs text-gray-400">({d.formula})</span></span>
                 <span className="text-red-600">-{fmt(d.total)} ကျပ်</span>
               </div>
             ))}
             <div className="border-t border-gray-300 mt-1 pt-1">
               <div className="flex justify-between text-sm font-bold text-red-700">
                 <span>စုစုပေါင်း ဖြတ်တောက်ငွေ</span>
-                <span>{fmt(totalDeductions)} ကျပ်</span>
+                <span>{fmt(result.totalDeductions)} ကျပ်</span>
               </div>
             </div>
           </>
@@ -228,7 +218,7 @@ export default function InvoiceSlip({ invoice, onClose }) {
         {/* Final */}
         <div className="mt-4 border-4 border-double border-gray-800 p-4 text-center">
           <p className="text-sm text-gray-500 mb-1">တောင်သူရရှိမည့်ငွေ</p>
-          <p className="text-3xl font-bold">{fmt(finalTotal)}</p>
+          <p className="text-3xl font-bold">{fmt(result.finalTotal)}</p>
           <p className="text-base font-semibold mt-1">ကျပ်</p>
         </div>
 

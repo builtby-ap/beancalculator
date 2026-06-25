@@ -18,7 +18,10 @@ export default function InvoiceHistory() {
   }, []);
 
   // Get unique bean names for filter dropdown
-  const beanTypes = [...new Set(invoices.map((inv) => inv.bean.name))];
+  const beanTypes = [...new Set(invoices.flatMap((inv) => {
+    if (inv.bean_rows) return inv.bean_rows.map((r) => r.beanName);
+    return inv.bean?.name ? [inv.bean.name] : [];
+  }))];
 
   // Apply filters
   useEffect(() => {
@@ -32,13 +35,16 @@ export default function InvoiceHistory() {
     }
 
     if (filterBean) {
-      result = result.filter((inv) => inv.bean.name === filterBean);
+      result = result.filter((inv) => {
+        if (inv.bean_rows) return inv.bean_rows.some((r) => r.beanName === filterBean);
+        return inv.bean?.name === filterBean;
+      });
     }
 
     if (searchFarmer) {
       const term = searchFarmer.toLowerCase();
       result = result.filter((inv) =>
-        inv.farmer.name.toLowerCase().includes(term)
+        inv.farmer?.name?.toLowerCase().includes(term)
       );
     }
 
@@ -49,10 +55,18 @@ export default function InvoiceHistory() {
 
   // Summary stats
   const totalInvoices = filtered.length;
-  const totalViss = filtered.reduce((s, inv) => s + inv.weight.total_viss, 0);
-  const totalBase = filtered.reduce((s, inv) => s + inv.pricing.base_amount, 0);
-  const totalDeductions = filtered.reduce((s, inv) => s + inv.deductions.total, 0);
-  const totalPayout = filtered.reduce((s, inv) => s + (inv.summary.final_total || inv.summary.final_amount), 0);
+  const totalViss = filtered.reduce((s, inv) => s + (inv.weight?.total_viss || 0), 0);
+  const totalBase = filtered.reduce((s, inv) => s + (inv.pricing?.base_amount || inv.summary?.base_amount || 0), 0);
+  const totalDeductions = filtered.reduce((s, inv) => s + (inv.deductions?.total || 0), 0);
+  const totalPayout = filtered.reduce((s, inv) => s + (inv.summary?.final_amount || 0), 0);
+
+  // Get bean names display for an invoice
+  const getBeanNames = (inv) => {
+    if (inv.bean_rows && inv.bean_rows.length > 0) {
+      return inv.bean_rows.map((r) => r.beanName).join(", ");
+    }
+    return inv.bean?.name || "-";
+  };
 
   return (
     <div className="space-y-6">
@@ -164,23 +178,23 @@ export default function InvoiceHistory() {
                       </span>
                     </td>
                     <td className="py-3 px-4 text-gray-600">{inv.date_formatted}</td>
-                    <td className="py-3 px-4 font-medium">{inv.farmer.name}</td>
+                    <td className="py-3 px-4 font-medium">{inv.farmer?.name || "-"}</td>
                     <td className="py-3 px-4">
                       <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full text-xs">
-                        {inv.bean.name}
+                        {getBeanNames(inv)}
                       </span>
                     </td>
                     <td className="py-3 px-4 text-right font-medium">
-                      {fmt(inv.weight.total_viss)} ပိဿာ
+                      {fmt(inv.weight?.total_viss || 0)} ပိဿာ
                     </td>
                     <td className="py-3 px-4 text-right">
-                      {fmt(inv.pricing.base_amount)} ကျပ်
+                      {fmt(inv.pricing?.base_amount || inv.summary?.base_amount || 0)} ကျပ်
                     </td>
                     <td className="py-3 px-4 text-right text-red-600">
-                      {inv.deductions.total > 0 ? `-${fmt(inv.deductions.total)}` : "-"} ကျပ်
+                      {inv.deductions?.total > 0 ? `-${fmt(inv.deductions.total)}` : "-"} ကျပ်
                     </td>
                     <td className="py-3 px-4 text-right font-bold text-emerald-700">
-                      {fmt(inv.summary.final_total || inv.summary.final_amount)} ကျပ်
+                      {fmt(inv.summary?.final_amount || 0)} ကျပ်
                     </td>
                     <td className="py-3 px-4 text-center">
                       <button

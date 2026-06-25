@@ -1,26 +1,230 @@
 [
   {
     "id": "b1",
-    "name": "ပဲတီစိမ်း",
-    "standardWeight": 56.25,
-    "createdAt": "2026-06-22T00:00:00.000Z"
+    "name": "ဂျုံ",
+    "standardWeight": 60,
+    "createdAt": "2026-06-25T00:00:00.000Z"
   },
   {
     "id": "b2",
-    "name": "ပဲကြီး",
-    "standardWeight": 55.25,
-    "createdAt": "2026-06-22T00:00:00.000Z"
+    "name": "ကုလားပဲအဝါ",
+    "standardWeight": 56.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b3",
+    "name": "နှမ်းဖြူ",
+    "standardWeight": 45,
+    "createdAt": "2026-06-25T00:00:00.000Z"
   },
   {
     "id": "b4",
-    "name": "ပဲစင်းငုံ",
-    "standardWeight": 60,
-    "createdAt": "2026-06-22T00:00:00.000Z"
+    "name": "ပြောင်းဖူးစေ့",
+    "standardWeight": 54,
+    "createdAt": "2026-06-25T00:00:00.000Z"
   },
   {
-    "id": "bfcba9a2-ea03-4672-93ee-07a1eccc2b43",
+    "id": "b5",
+    "name": "ခွန်ပြောင်းအနက်",
+    "standardWeight": 53,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b6",
+    "name": "အထွက်တိုးပြောင်း",
+    "standardWeight": 53,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b7",
+    "name": "သိပ္ပံပြောင်း",
+    "standardWeight": 53,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b8",
+    "name": "ဆန်ပြောင်း",
+    "standardWeight": 59.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b9",
+    "name": "ကုလားပဲဖြူ ကြီး",
+    "standardWeight": 57.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b10",
+    "name": "ကုလားပဲဖြူ သေး",
+    "standardWeight": 57.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b11",
+    "name": "ပဲတီစိမ်း",
+    "standardWeight": 56.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b12",
+    "name": "စွန်တာပြာ",
+    "standardWeight": 58.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b13",
     "name": "မတ်ပဲ",
     "standardWeight": 60,
-    "createdAt": "2026-06-22T17:43:29.385Z"
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b14",
+    "name": "ပဲစိမ်းငုံ",
+    "standardWeight": 60,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b15",
+    "name": "နံနံ",
+    "standardWeight": 24,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b16",
+    "name": "ပဲလိပ်ပြာ/ပဲကြား",
+    "standardWeight": 56.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b17",
+    "name": "ပဲနီပြား",
+    "standardWeight": 55.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b18",
+    "name": "မြေထောက်ပဲ",
+    "standardWeight": 54,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b19",
+    "name": "တရုတ်ပဲကြီး",
+    "standardWeight": 50,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b20",
+    "name": "နိုင်လွန်ပဲ",
+    "standardWeight": 59.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b21",
+    "name": "စားတော်ပဲ",
+    "standardWeight": 59.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b22",
+    "name": "ပဲလွန်းဖြူ",
+    "standardWeight": 60,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b23",
+    "name": "ပဲလွန်းပြာ",
+    "standardWeight": 54.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b24",
+    "name": "ပဲလွန်းဝါ",
+    "standardWeight": 54.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b25",
+    "name": "ထောပတ်ဖြူကြီး/သေး",
+    "standardWeight": 56.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b26",
+    "name": "ပဲကြီးမျိုးစုံ/ရွှေယင်းမာ",
+    "standardWeight": 55.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b27",
+    "name": "ပဲပုတ်စေ့",
+    "standardWeight": 53.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b28",
+    "name": "ပဲရာဇာ",
+    "standardWeight": 61.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b29",
+    "name": "ပဲယင်း",
+    "standardWeight": 60,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b30",
+    "name": "ခေတ်သစ်(ခ)ပဲဖြူလေး",
+    "standardWeight": 57.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b31",
+    "name": "ဆီနေကြာ",
+    "standardWeight": 27,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b32",
+    "name": "ပန်းနှမ်း",
+    "standardWeight": 45,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b33",
+    "name": "မိုးလေးနှမ်း",
+    "standardWeight": 49.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b34",
+    "name": "ကြက်ဆူအကြား (နီကြား/ဖြူကြား)",
+    "standardWeight": 36,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b35",
+    "name": "ကြက်ဆူအနက်",
+    "standardWeight": 30,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b36",
+    "name": "ကဇင်းသီး",
+    "standardWeight": 37.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "b37",
+    "name": "ကြို့စေ့",
+    "standardWeight": 38.25,
+    "createdAt": "2026-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "ebe6aab4-9d1c-4cd3-a5f3-b8a7cc0bb2bc",
+    "name": "နှမ်းနက်",
+    "standardWeight": 45,
+    "createdAt": "2026-06-25T17:07:39.122Z"
   }
 ]

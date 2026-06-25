@@ -3,5 +3,9 @@
     "allow": [
       "Bash(gh api *)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "@21st-dev/magic"
+  ],
+  "enableAllProjectMcpServers": true
 }

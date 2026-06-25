@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { getBeans, calculateInvoice } from "../api/client";
+import { getBeans } from "../api/client";
 import { calculateTotalViss } from "../utils/calculateTotalViss";
 import { calculateSettlement } from "../utils/calculateSettlement";
-import InvoiceSlip from "../components/InvoiceSlip";
 
 const emptyForm = {
-  farmerName: "",
   beanTypeId: "",
   numberOfBags: "",
   vissPerBag: "25",
@@ -21,8 +19,6 @@ export default function Calculator() {
   const [form, setForm] = useState(emptyForm);
   const [otherFees, setOtherFees] = useState([]);
   const [result, setResult] = useState(null);
-  const [invoice, setInvoice] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getBeans().then(setBeans);
@@ -73,38 +69,15 @@ export default function Calculator() {
   };
   const removeOtherFee = (i) => setOtherFees(otherFees.filter((_, idx) => idx !== i));
 
-  const handleCalculate = () => {
+  const handleCheck = () => {
     if (!result) return;
     document.getElementById("result-section")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleGenerateInvoice = async () => {
-    if (!form.farmerName || !form.beanTypeId || !form.numberOfBags || !form.vissPerBag || !form.price) {
-      alert("လိုအပ်သော အချက်အလက်များ ဖြည့်ပါ");
-      return;
-    }
-    setLoading(true);
-    try {
-      const inv = await calculateInvoice({
-        farmerName: form.farmerName,
-        beanTypeId: form.beanTypeId,
-        numberOfBags: Number(form.numberOfBags),
-        vissPerBag: Number(form.vissPerBag),
-        extraViss: Number(form.extraViss) || 0,
-        price: Number(form.price),
-        laborFeePerBag: Number(form.laborFeePerBag) || 0,
-        bagCostPerBag: Number(form.bagCostPerBag) || 0,
-        serviceFeePercent: Number(form.serviceFeePercent) || 0,
-        otherFees: otherFees
-          .filter((f) => f.name && Number(f.amountPerBag) > 0)
-          .map((f) => ({ name: f.name, amountPerBag: Number(f.amountPerBag) })),
-      });
-      setInvoice(inv);
-    } catch (err) {
-      alert("စာရင်းထုတ်၍ မရပါ: " + (err.response?.data?.error || err.message));
-    } finally {
-      setLoading(false);
-    }
+  const handleReset = () => {
+    setForm(emptyForm);
+    setOtherFees([]);
+    setResult(null);
   };
 
   const fmt = (n) => Number(n).toLocaleString("my-MM");
@@ -113,27 +86,29 @@ export default function Calculator() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      <h2 className="text-2xl font-bold">တွက်ချက်စနစ်</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold">တွက်ချက်စနစ်</h2>
+        <button
+          onClick={handleReset}
+          className="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition"
+        >
+          ပြန်စရန်
+        </button>
+      </div>
 
       {/* ── Input Card ── */}
       <div className="bg-white rounded-xl shadow-sm p-6 space-y-6">
 
-        {/* Farmer + Bean */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium mb-1.5">တောင်သူအမည်</label>
-            <input type="text" name="farmerName" value={form.farmerName} onChange={handleChange} placeholder="ဥပမာ — ဦးမောင်" className={inputCls} />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-1.5">ပဲအမျိုးအစား</label>
-            <select name="beanTypeId" value={form.beanTypeId} onChange={handleChange} className={inputCls}>
-              <option value="">-- ရွေးပါ --</option>
-              {beans.map((b) => (
-                <option key={b.id} value={b.id}>{b.name} (စံ: {b.standardWeight} ပိဿာ)</option>
-              ))}
-            </select>
-            {selectedBean && <p className="text-xs text-gray-400 mt-1">စံချိန်တန်း အလေးချိန်: {selectedBean.standardWeight} ပိဿာ</p>}
-          </div>
+        {/* Bean type */}
+        <div>
+          <label className="block text-sm font-medium mb-1.5">ပဲအမျိုးအစား</label>
+          <select name="beanTypeId" value={form.beanTypeId} onChange={handleChange} className={inputCls}>
+            <option value="">-- ရွေးပါ --</option>
+            {beans.map((b) => (
+              <option key={b.id} value={b.id}>{b.name} (စံ: {b.standardWeight} ပိဿာ)</option>
+            ))}
+          </select>
+          {selectedBean && <p className="text-xs text-gray-400 mt-1">စံချိန်တန်း အလေးချိန်: {selectedBean.standardWeight} ပိဿာ</p>}
         </div>
 
         <hr className="border-gray-100" />
@@ -220,15 +195,10 @@ export default function Calculator() {
           </div>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-3 pt-2">
-          <button type="button" onClick={handleCalculate} disabled={!result} className="bg-emerald-600 text-white px-6 py-2.5 rounded-lg hover:bg-emerald-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition font-medium">
-            တွက်ချက်ရန်
-          </button>
-          <button type="button" onClick={handleGenerateInvoice} disabled={!result || loading} className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition font-medium">
-            {loading ? "ထုတ်နေသည်..." : "ငွေပေးချေစာရင်းထုတ်ရန်"}
-          </button>
-        </div>
+        {/* Check button */}
+        <button type="button" onClick={handleCheck} disabled={!result} className="bg-emerald-600 text-white px-6 py-2.5 rounded-lg hover:bg-emerald-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition font-medium">
+          စစ်ဆေးရန်
+        </button>
       </div>
 
       {/* ── Live Result ── */}
@@ -322,11 +292,6 @@ export default function Calculator() {
             </div>
           </div>
         </div>
-      )}
-
-      {/* ── Invoice Slip ── */}
-      {invoice && (
-        <InvoiceSlip invoice={invoice} onClose={() => setInvoice(null)} />
       )}
     </div>
   );
