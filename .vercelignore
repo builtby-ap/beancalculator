@@ -1,0 +1,7 @@
+server/node_modules
+server/data/transactions.json
+server/data/invoices.json
+.claude
+docs
+slides
+README.md

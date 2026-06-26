@@ -1,0 +1,19 @@
+{
+  "name": "myanmar-bean-trading",
+  "private": true,
+  "version": "1.0.0",
+  "description": "မြန်မာပဲရောင်းဝယ် အလေးချိန်နှင့်ငွေတွက်စနစ်",
+  "scripts": {
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "vercel-build": "cd client && npm install && npm run build"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "express": "^4.22.2",
+    "jsonwebtoken": "^9.0.3",
+    "uuid": "^9.0.1"
+  }
+}
