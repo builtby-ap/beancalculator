@@ -43,109 +43,185 @@ export default function TransactionList({ transactions, onRefresh }) {
     <div className="space-y-3">
       {transactions.map((txn) => (
         <div key={txn.id} className="bg-white border rounded-lg overflow-hidden">
-          {/* Main row */}
-          <div className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-sm">
-            {/* Date + Farmer */}
-            <div className="col-span-2">
-              <p className="text-xs text-gray-400">
-                {new Date(txn.createdAt).toLocaleDateString("my-MM")}
-              </p>
-              <p className="font-medium">{txn.farmerName}</p>
-            </div>
-
-            {/* Bean + Weight */}
-            <div className="col-span-3">
-              <p className="text-gray-600">{txn.beanName}</p>
-              <p className="text-xs text-gray-400">
-                {txn.numberOfBags} အိတ် × {txn.vissPerBag} ပိဿာ
-                {txn.extraViss > 0 && ` + ${formatNumber(txn.extraViss)} အပို`}
-                {" = "}
-                <strong>{formatNumber(txn.totalViss)} ပိဿာ</strong>
-              </p>
-            </div>
-
-            {/* Amount breakdown */}
-            <div className="col-span-3 text-right">
-              <p className="text-xs text-gray-400">
-                အခြေခံ: {formatNumber(txn.baseAmount)} ကျပ်
-              </p>
-              {txn.deductions.totalDeductions > 0 && (
-                <p className="text-xs text-red-500">
-                  နုတ်: -{formatNumber(txn.deductions.totalDeductions)} ကျပ်
-                </p>
-              )}
-              <p className="font-bold text-emerald-700">
-                {formatNumber(txn.finalTotal)} ကျပ်
-              </p>
-            </div>
-
-            {/* Paid + Status */}
-            <div className="col-span-2 text-right">
-              {editingId === txn.id ? (
-                <input
-                  type="number"
-                  value={paidInput}
-                  onChange={(e) => setPaidInput(e.target.value)}
-                  className="w-full border rounded px-2 py-1 text-right text-xs"
-                  autoFocus
-                />
-              ) : (
-                <>
+          {/* Main row - responsive layout */}
+          <div className="px-4 py-3 text-sm">
+            {/* Mobile layout */}
+            <div className="md:hidden space-y-2">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">{txn.farmerName}</p>
                   <p className="text-xs text-gray-400">
-                    ပေးပြီး: {formatNumber(txn.paidAmount)} ကျပ်
+                    {new Date(txn.createdAt).toLocaleDateString("my-MM")} · {txn.beanName}
                   </p>
-                  <span
-                    className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
-                      statusLabel[txn.status].bg
-                    }`}
-                  >
-                    {statusLabel[txn.status].text}
-                  </span>
-                </>
-              )}
+                </div>
+                <span
+                  className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
+                    statusLabel[txn.status].bg
+                  }`}
+                >
+                  {statusLabel[txn.status].text}
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-gray-500">
+                  {txn.numberOfBags} အိတ် × {txn.vissPerBag} ပိဿာ = {formatNumber(txn.totalViss)} ပိဿာ
+                </span>
+                <span className="font-bold text-emerald-700">
+                  {formatNumber(txn.finalTotal)} ကျပ်
+                </span>
+              </div>
+              <div className="flex gap-1 justify-end">
+                <button
+                  onClick={() => setExpandedId(expandedId === txn.id ? null : txn.id)}
+                  className="text-xs bg-gray-100 px-2 py-1 rounded hover:bg-gray-200"
+                >
+                  {expandedId === txn.id ? "ပိတ်" : "အသေးစိတ်"}
+                </button>
+                {editingId === txn.id ? (
+                  <>
+                    <input
+                      type="number"
+                      value={paidInput}
+                      onChange={(e) => setPaidInput(e.target.value)}
+                      className="w-24 border rounded px-2 py-1 text-right text-xs"
+                      autoFocus
+                    />
+                    <button
+                      onClick={() => savePaid(txn.id)}
+                      className="text-xs bg-emerald-500 text-white px-2 py-1 rounded hover:bg-emerald-600"
+                    >
+                      သိမ်း
+                    </button>
+                    <button
+                      onClick={() => setEditingId(null)}
+                      className="text-xs bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
+                    >
+                      ပယ်
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => startEdit(txn)}
+                      className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded hover:bg-blue-200"
+                    >
+                      ပြင်
+                    </button>
+                    <button
+                      onClick={() => handleDelete(txn.id)}
+                      className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200"
+                    >
+                      ဖျက်
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
 
-            {/* Actions */}
-            <div className="col-span-2 flex gap-1 justify-end">
-              <button
-                onClick={() =>
-                  setExpandedId(expandedId === txn.id ? null : txn.id)
-                }
-                className="text-xs bg-gray-100 px-2 py-1 rounded hover:bg-gray-200"
-              >
-                {expandedId === txn.id ? "ပိတ်" : "အသေးစိတ်"}
-              </button>
-              {editingId === txn.id ? (
-                <>
-                  <button
-                    onClick={() => savePaid(txn.id)}
-                    className="text-xs bg-emerald-500 text-white px-2 py-1 rounded hover:bg-emerald-600"
-                  >
-                    သိမ်း
-                  </button>
-                  <button
-                    onClick={() => setEditingId(null)}
-                    className="text-xs bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
-                  >
-                    ပယ်
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    onClick={() => startEdit(txn)}
-                    className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded hover:bg-blue-200"
-                  >
-                    ပြင်
-                  </button>
-                  <button
-                    onClick={() => handleDelete(txn.id)}
-                    className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200"
-                  >
-                    ဖျက်
-                  </button>
-                </>
-              )}
+            {/* Desktop layout */}
+            <div className="hidden md:grid md:grid-cols-12 md:gap-2 md:items-center">
+              {/* Date + Farmer */}
+              <div className="col-span-2">
+                <p className="text-xs text-gray-400">
+                  {new Date(txn.createdAt).toLocaleDateString("my-MM")}
+                </p>
+                <p className="font-medium">{txn.farmerName}</p>
+              </div>
+
+              {/* Bean + Weight */}
+              <div className="col-span-3">
+                <p className="text-gray-600">{txn.beanName}</p>
+                <p className="text-xs text-gray-400">
+                  {txn.numberOfBags} အိတ် × {txn.vissPerBag} ပိဿာ
+                  {txn.extraViss > 0 && ` + ${formatNumber(txn.extraViss)} အပို`}
+                  {" = "}
+                  <strong>{formatNumber(txn.totalViss)} ပိဿာ</strong>
+                </p>
+              </div>
+
+              {/* Amount breakdown */}
+              <div className="col-span-3 text-right">
+                <p className="text-xs text-gray-400">
+                  အခြေခံ: {formatNumber(txn.baseAmount)} ကျပ်
+                </p>
+                {txn.deductions.totalDeductions > 0 && (
+                  <p className="text-xs text-red-500">
+                    နုတ်: -{formatNumber(txn.deductions.totalDeductions)} ကျပ်
+                  </p>
+                )}
+                <p className="font-bold text-emerald-700">
+                  {formatNumber(txn.finalTotal)} ကျပ်
+                </p>
+              </div>
+
+              {/* Paid + Status */}
+              <div className="col-span-2 text-right">
+                {editingId === txn.id ? (
+                  <input
+                    type="number"
+                    value={paidInput}
+                    onChange={(e) => setPaidInput(e.target.value)}
+                    className="w-full border rounded px-2 py-1 text-right text-xs"
+                    autoFocus
+                  />
+                ) : (
+                  <>
+                    <p className="text-xs text-gray-400">
+                      ပေးပြီး: {formatNumber(txn.paidAmount)} ကျပ်
+                    </p>
+                    <span
+                      className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
+                        statusLabel[txn.status].bg
+                      }`}
+                    >
+                      {statusLabel[txn.status].text}
+                    </span>
+                  </>
+                )}
+              </div>
+
+              {/* Actions */}
+              <div className="col-span-2 flex gap-1 justify-end">
+                <button
+                  onClick={() =>
+                    setExpandedId(expandedId === txn.id ? null : txn.id)
+                  }
+                  className="text-xs bg-gray-100 px-2 py-1 rounded hover:bg-gray-200"
+                >
+                  {expandedId === txn.id ? "ပိတ်" : "အသေးစိတ်"}
+                </button>
+                {editingId === txn.id ? (
+                  <>
+                    <button
+                      onClick={() => savePaid(txn.id)}
+                      className="text-xs bg-emerald-500 text-white px-2 py-1 rounded hover:bg-emerald-600"
+                    >
+                      သိမ်း
+                    </button>
+                    <button
+                      onClick={() => setEditingId(null)}
+                      className="text-xs bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
+                    >
+                      ပယ်
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => startEdit(txn)}
+                      className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded hover:bg-blue-200"
+                    >
+                      ပြင်
+                    </button>
+                    <button
+                      onClick={() => handleDelete(txn.id)}
+                      className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200"
+                    >
+                      ဖျက်
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 

@@ -80,7 +80,7 @@ export default function SettingsForm() {
       {/* Invoice Settings */}
       <div className="bg-white rounded-xl shadow-sm p-6 space-y-4">
         <h3 className="text-sm font-semibold text-gray-600 pb-2 border-b">ဘောင်ချာ ဆက်တင်</h3>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="text-xs font-medium text-gray-500">ဘောင်ချာ Prefix</label>
             <input type="text" name="invoice_prefix" value={form.invoice_prefix || ""} onChange={handleChange} className={inputCls + " mt-1"} />

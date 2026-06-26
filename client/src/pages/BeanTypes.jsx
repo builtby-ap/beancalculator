@@ -43,43 +43,45 @@ export default function BeanTypes() {
             ပဲအမျိုးအစား မရှိသေးပါ
           </div>
         ) : (
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b-2 border-gray-200 text-left">
-                <th className="py-2 px-3">ပဲအမည်</th>
-                <th className="py-2 px-3 text-right">စံချိန်တန်း အလေးချိန် (ပိဿာ)</th>
-                <th className="py-2 px-3">ဖန်တီးသည့်ရက်</th>
-                <th className="py-2 px-3">လုပ်ဆောင်</th>
-              </tr>
-            </thead>
-            <tbody>
-              {beans.map((bean) => (
-                <tr key={bean.id} className="border-b hover:bg-gray-50">
-                  <td className="py-2 px-3 font-medium">{bean.name}</td>
-                  <td className="py-2 px-3 text-right">{bean.standardWeight}</td>
-                  <td className="py-2 px-3 text-xs text-gray-500">
-                    {new Date(bean.createdAt).toLocaleDateString("my-MM")}
-                  </td>
-                  <td className="py-2 px-3">
-                    <div className="flex gap-1">
-                      <button
-                        onClick={() => setEditingBean(bean)}
-                        className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200"
-                      >
-                        ပြင်
-                      </button>
-                      <button
-                        onClick={() => handleDelete(bean.id)}
-                        className="text-xs bg-red-100 text-red-700 px-3 py-1 rounded hover:bg-red-200"
-                      >
-                        ဖျက်
-                      </button>
-                    </div>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[500px]">
+              <thead>
+                <tr className="border-b-2 border-gray-200 text-left">
+                  <th className="py-2 px-3">ပဲအမည်</th>
+                  <th className="py-2 px-3 text-right">စံချိန်တန်း အလေးချိန် (ပိဿာ)</th>
+                  <th className="py-2 px-3">ဖန်တီးသည့်ရက်</th>
+                  <th className="py-2 px-3">လုပ်ဆောင်</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {beans.map((bean) => (
+                  <tr key={bean.id} className="border-b hover:bg-gray-50">
+                    <td className="py-2 px-3 font-medium">{bean.name}</td>
+                    <td className="py-2 px-3 text-right">{bean.standardWeight}</td>
+                    <td className="py-2 px-3 text-xs text-gray-500">
+                      {new Date(bean.createdAt).toLocaleDateString("my-MM")}
+                    </td>
+                    <td className="py-2 px-3">
+                      <div className="flex gap-1">
+                        <button
+                          onClick={() => setEditingBean(bean)}
+                          className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200"
+                        >
+                          ပြင်
+                        </button>
+                        <button
+                          onClick={() => handleDelete(bean.id)}
+                          className="text-xs bg-red-100 text-red-700 px-3 py-1 rounded hover:bg-red-200"
+                        >
+                          ဖျက်
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

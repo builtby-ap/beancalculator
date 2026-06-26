@@ -18,8 +18,8 @@ export default function BeanTypeForm({ editingBean, onSuccess, onCancel }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3 items-end flex-wrap">
-      <div>
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:items-end">
+      <div className="flex-1 min-w-0">
         <label className="block text-sm font-medium mb-1">ပဲအမည်</label>
         <input
           type="text"
@@ -27,10 +27,10 @@ export default function BeanTypeForm({ editingBean, onSuccess, onCancel }) {
           onChange={(e) => setName(e.target.value)}
           required
           placeholder="ဥပမာ - ပဲတီစိမ်း"
-          className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-400 focus:outline-none"
+          className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-400 focus:outline-none"
         />
       </div>
-      <div>
+      <div className="flex-1 min-w-0 sm:max-w-[200px]">
         <label className="block text-sm font-medium mb-1">
           စံချိန်တန်း အလေးချိန် (ပိဿာ)
         </label>
@@ -42,27 +42,29 @@ export default function BeanTypeForm({ editingBean, onSuccess, onCancel }) {
           min="0.1"
           step="0.01"
           placeholder="1"
-          className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-400 focus:outline-none"
+          className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-400 focus:outline-none"
         />
         <p className="text-xs text-gray-400 mt-1">
           ဈေးနှုန်း တွက်ရာတွင် အသုံးပြုသော စံအလေးချိန်
         </p>
       </div>
-      <button
-        type="submit"
-        className="bg-emerald-600 text-white px-5 py-2 rounded-lg hover:bg-emerald-700 transition font-medium"
-      >
-        {editingBean ? "ပြင်ဆင်ရန်" : "ထည့်ရန်"}
-      </button>
-      {onCancel && (
+      <div className="flex gap-2">
         <button
-          type="button"
-          onClick={onCancel}
-          className="bg-gray-200 px-5 py-2 rounded-lg hover:bg-gray-300 transition"
+          type="submit"
+          className="bg-emerald-600 text-white px-5 py-2 rounded-lg hover:bg-emerald-700 transition font-medium"
         >
-          ပယ်ဖျက်
+          {editingBean ? "ပြင်ဆင်ရန်" : "ထည့်ရန်"}
         </button>
-      )}
+        {onCancel && (
+          <button
+            type="button"
+            onClick={onCancel}
+            className="bg-gray-200 px-5 py-2 rounded-lg hover:bg-gray-300 transition"
+          >
+            ပယ်ဖျက်
+          </button>
+        )}
+      </div>
     </form>
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getInvoices } from "../api/client";
+import { getInvoices, deleteInvoice } from "../api/client";
 import InvoiceSlip from "../components/InvoiceSlip";
 
 export default function InvoiceHistory() {
@@ -66,6 +66,14 @@ export default function InvoiceHistory() {
       return inv.bean_rows.map((r) => r.beanName).join(", ");
     }
     return inv.bean?.name || "-";
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("ဤဘောင်ချာကို ဖျက်မှာ သေချာပါသလား?")) return;
+    await deleteInvoice(id);
+    const updated = invoices.filter((inv) => inv.invoice_id !== id);
+    setInvoices(updated);
+    setFiltered(filtered.filter((inv) => inv.invoice_id !== id));
   };
 
   return (
@@ -197,12 +205,20 @@ export default function InvoiceHistory() {
                       {fmt(inv.summary?.final_amount || 0)} ကျပ်
                     </td>
                     <td className="py-3 px-4 text-center">
-                      <button
-                        onClick={() => setSelectedInvoice(inv)}
-                        className="text-xs bg-blue-100 text-blue-700 px-3 py-1.5 rounded-lg hover:bg-blue-200 transition"
-                      >
-                        ကြည့်ရန်
-                      </button>
+                      <div className="flex gap-1 justify-center">
+                        <button
+                          onClick={() => setSelectedInvoice(inv)}
+                          className="text-xs bg-blue-100 text-blue-700 px-3 py-1.5 rounded-lg hover:bg-blue-200 transition"
+                        >
+                          ကြည့်ရန်
+                        </button>
+                        <button
+                          onClick={() => handleDelete(inv.invoice_id)}
+                          className="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition"
+                        >
+                          ဖျက်ရန်
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

@@ -1,72 +1,5 @@
 [
   {
-    "invoice_id": "INV-1782406160162-5D1C",
-    "date": "2026-06-25T00:00:00.000Z",
-    "date_formatted": "၂၅/၆/၂၀၂၆",
-    "farmer": {
-      "name": "Daw Aye"
-    },
-    "bean_rows": [
-      {
-        "beanTypeId": "b1",
-        "beanName": "ပဲတီစိမ်း",
-        "standardWeight": 56.25,
-        "vissPerBag": 30.5,
-        "numberOfBags": 100,
-        "extraViss": 0,
-        "price": 265000,
-        "totalViss": 3050,
-        "value": 14368889
-      },
-      {
-        "beanTypeId": "948dc82f-5ec3-40e1-97b5-eed1b2d83a61",
-        "beanName": "နှမ်း",
-        "standardWeight": 45,
-        "vissPerBag": 25,
-        "numberOfBags": 49,
-        "extraViss": 23,
-        "price": 365000,
-        "totalViss": 1248,
-        "value": 10122667
-      }
-    ],
-    "bean": {
-      "name": "ပဲတီစိမ်း, နှမ်း"
-    },
-    "weight": {
-      "total_bags": 149,
-      "total_viss": 4298
-    },
-    "pricing": {
-      "base_amount": 24491556
-    },
-    "deductions": {
-      "items": [
-        {
-          "key": "labor",
-          "label": "လုပ်သားခ",
-          "type": "per_bag",
-          "amount": 400,
-          "total": 59600
-        },
-        {
-          "key": "service",
-          "label": "ပွဲခ",
-          "type": "percent",
-          "amount": 1,
-          "total": 244916
-        }
-      ],
-      "total": 304516
-    },
-    "summary": {
-      "base_amount": 24491556,
-      "total_deductions": 304516,
-      "final_amount": 24187040
-    },
-    "paid_amount": 75200040
-  },
-  {
     "invoice_id": "INV-1782406200738-F43E",
     "date": "2026-06-25T00:00:00.000Z",
     "date_formatted": "၂၅/၆/၂၀၂၆",
@@ -141,7 +74,8 @@
       "base_amount": 51668889,
       "total_deductions": 655889,
       "final_amount": 51013000
-    }
+    },
+    "paid_amount": 51013000
   },
   {
     "invoice_id": "INV-1782406860924-3CA2",
@@ -253,63 +187,7 @@
       "total_deductions": 79411,
       "final_amount": 5901656
     },
-    "paid_amount": 0
-  },
-  {
-    "invoice_id": "INV-1782408463108-EB33",
-    "date": "2026-06-26T00:00:00.000Z",
-    "date_formatted": "၂၆/၆/၂၀၂၆",
-    "farmer": {
-      "name": "Daw Htay"
-    },
-    "bean_rows": [
-      {
-        "beanTypeId": "b11",
-        "beanName": "ပဲတီစိမ်း",
-        "standardWeight": 56.25,
-        "vissPerBag": 30,
-        "numberOfBags": 220,
-        "extraViss": 0,
-        "price": 240000,
-        "totalViss": 6600,
-        "value": 28160000
-      }
-    ],
-    "bean": {
-      "name": "ပဲတီစိမ်း"
-    },
-    "weight": {
-      "total_bags": 220,
-      "total_viss": 6600
-    },
-    "pricing": {
-      "base_amount": 28160000
-    },
-    "deductions": {
-      "items": [
-        {
-          "key": "labor",
-          "label": "လုပ်သားခ",
-          "type": "per_bag",
-          "amount": 200,
-          "total": 44000
-        },
-        {
-          "key": "service",
-          "label": "ပွဲခ",
-          "type": "percent",
-          "amount": 1,
-          "total": 281600
-        }
-      ],
-      "total": 325600
-    },
-    "summary": {
-      "base_amount": 28160000,
-      "total_deductions": 325600,
-      "final_amount": 27834400
-    },
-    "paid_amount": 0
+    "paid_amount": 5901656
   },
   {
     "invoice_id": "INV-1782408497344-9236",
@@ -365,7 +243,7 @@
       "total_deductions": 89472,
       "final_amount": 6937728
     },
-    "paid_amount": 0
+    "paid_amount": 6937728
   },
   {
     "invoice_id": "INV-1782408557331-955E",
@@ -414,6 +292,6 @@
       "total_deductions": 8000,
       "final_amount": 2338667
     },
-    "paid_amount": 0
+    "paid_amount": 2338667
   }
 ]

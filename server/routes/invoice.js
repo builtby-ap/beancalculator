@@ -247,6 +247,18 @@ router.get("/:id", (req, res) => {
   res.json(invoice);
 });
 
+// DELETE /api/invoice/:id
+router.delete("/:id", (req, res) => {
+  const invoices = readInvoices();
+  const index = invoices.findIndex((inv) => inv.invoice_id === req.params.id);
+  if (index === -1) {
+    return res.status(404).json({ error: "ဘောင်ချာ ရှာမတွေ့ပါ" });
+  }
+  invoices.splice(index, 1);
+  writeInvoices(invoices);
+  res.json({ message: "ဖျက်ပြီးပါပြီ" });
+});
+
 // PUT /api/invoice/:id — Update paid amount
 router.put("/:id", (req, res) => {
   const { paid_amount } = req.body;

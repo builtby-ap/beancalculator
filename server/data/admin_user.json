@@ -1,10 +1,10 @@
 {
   "id": "admin-001",
   "username": "admin",
-  "password_hash": "$2b$10$qu1vIjMwHOAUjgk7LJyuZ.F2hOWlMQ6dwAbLFH/KKSRr62VqU6ar2",
+  "password_hash": "$2b$10$az5sTagTmcReoz7Kk5IK8e2JMN6ZdKHCD7GG8kRfEd2m9q3j2wMVC",
   "name": "ဦးအောင်မင်း",
   "phone": "09-123456789",
   "business_name": "အောင်မင်း ပဲရောင်းဝယ်ရေး",
   "created_at": "2026-06-25T17:39:07.578Z",
-  "updated_at": "2026-06-25T17:48:38.896Z"
+  "updated_at": "2026-06-26T09:33:22.052Z"
 }
