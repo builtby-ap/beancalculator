@@ -13,6 +13,10 @@
 
 ## 📸 Screenshots
 
+### ပင်မစာမျက်နှာ (Dashboard)
+
+![Dashboard](screenshots/dashboard.png)
+
 - အကောင့်ဝင်ရန် (Login with JWT auth)
 - ပင်မစာမျက်နှာ (Dashboard with charts & farmer tracking)
 - ငွေရှင်းစာရင်း (Multi-bean invoice creation with print/PDF)
