@@ -6,6 +6,10 @@
       "env": {
         "MAGIC_API_KEY": "sk-_l6WhL9uNJgou5DwwwMb7w"
       }
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
     }
   }
 }

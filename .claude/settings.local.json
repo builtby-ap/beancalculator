@@ -5,7 +5,8 @@
     ]
   },
   "enabledMcpjsonServers": [
-    "@21st-dev/magic"
+    "@21st-dev/magic",
+    "chrome-devtools"
   ],
   "enableAllProjectMcpServers": true
 }

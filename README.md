@@ -89,4 +89,4 @@ final_amount     = value - total_deductions
 
 ## 📄 License
 
-Private — Phase 1
+MIT
