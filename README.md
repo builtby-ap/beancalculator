@@ -13,17 +13,29 @@
 
 ## 📸 Screenshots
 
+### အကောင့်ဝင်ရန် (Login)
+
+![Login](screenshots/login.png)
+
 ### ပင်မစာမျက်နှာ (Dashboard)
 
 ![Dashboard](screenshots/dashboard.png)
 
-- အကောင့်ဝင်ရန် (Login with JWT auth)
-- ပင်မစာမျက်နှာ (Dashboard with charts & farmer tracking)
-- ငွေရှင်းစာရင်း (Multi-bean invoice creation with print/PDF)
-- တွက်ချက်စနစ် (Quick calculator for checking amounts)
-- မှတ်တမ်းများ (Invoice history with search, filter & delete)
-- ပဲအမျိုးအစားများ (37 bean types with standard weights)
-- ကိုယ်ရေး / ဆက်တင်များ / စကားဝှက် ပြောင်းရန်
+### ငွေရှင်းစာရင်း (Invoice Creation)
+
+![Invoice](screenshots/invoice.png)
+
+### တွက်ချက်စနစ် (Calculator)
+
+![Calculator](screenshots/calculator.png)
+
+### မှတ်တမ်းများ (Invoice History)
+
+![History](screenshots/history.png)
+
+### ပဲအမျိုးအစားများ (Bean Types)
+
+![Beans](screenshots/beans.png)
 
 ## 🛠 နည်းပညာ
 
