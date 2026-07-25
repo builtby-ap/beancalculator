@@ -87,6 +87,7 @@ router.post("/", (req, res) => {
     extraViss: weightBreakdown.extraViss,
     totalViss,
     price: Number(price),
+    pricePerViss: Number(price),
     standardWeight: bean.standardWeight,
     baseAmount: settlement.baseAmount,
     deductions: settlement.deductions,

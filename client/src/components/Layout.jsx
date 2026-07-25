@@ -6,6 +6,7 @@ const navItems = [
   { path: "/", label: "ပင်မစာမျက်နှာ", icon: "🏠" },
   { path: "/new-invoice", label: "ငွေရှင်းစာရင်း", icon: "🧾" },
   { path: "/calculator", label: "တွက်ချက်စနစ်", icon: "🧮" },
+  { path: "/transactions", label: "အရောင်းအဝယ် မှတ်တမ်း", icon: "📋" },
   { path: "/invoices", label: "မှတ်တမ်းများ", icon: "📑" },
   { path: "/beans", label: "ပဲအမျိုးအစားများ", icon: "🫘" },
 ];

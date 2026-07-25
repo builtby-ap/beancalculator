@@ -80,11 +80,26 @@ export default function Dashboard() {
     loadData();
   };
 
-  // ── Farmer-filtered invoices (for recent invoices section only) ──
+  // ── Farmer-filtered invoices (for recent invoices + summary cards) ──
   const farmerInvoices = useMemo(() => {
     if (!selectedFarmer) return invoices;
     return invoices.filter((inv) => inv.farmer?.name === selectedFarmer);
   }, [invoices, selectedFarmer]);
+
+  // Filtered summary values when a farmer is selected
+  const filteredSummary = useMemo(() => {
+    if (!selectedFarmer) return null;
+    const fInvoices = farmerInvoices;
+    return {
+      totalInvoices: fInvoices.length,
+      totalValue: fInvoices.reduce((s, inv) => s + (inv.summary?.base_amount || 0), 0),
+      totalDeductions: fInvoices.reduce((s, inv) => s + (inv.deductions?.total || 0), 0),
+      totalFinal: fInvoices.reduce((s, inv) => s + (inv.summary?.final_amount || 0), 0),
+      totalPaid: fInvoices.reduce((s, inv) => s + (inv.paid_amount || 0), 0),
+    };
+  }, [farmerInvoices, selectedFarmer]);
+
+  const displaySummary = filteredSummary || summary;
 
   // Farmer-visible rows for balance table — filtered by selected farmer
   const farmerRows = useMemo(() => {
@@ -177,14 +192,19 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* ── Summary Cards — ALL GLOBAL ── */}
+      {selectedFarmer && (
+        <div className="bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-2 text-sm text-emerald-700 font-medium">
+          🧑‍🌾 {selectedFarmer} — တောင်သူအတွက် စာရင်းများ
+        </div>
+      )}
+      {/* ── Summary Cards — filtered by selected farmer ── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-        <Card title="📄 စုစုပေါင်း Invoice များ" value={summary.totalInvoices} sub={`ယခုလ: ${summary.monthInvoicesCount}`} />
-        <Card title="💰 Invoice တန်ဖိုး" value={`${fmt(summary.totalValue)}`} unit="ကျပ်" sub={datePreset === "month" ? `ယခုလ: ${fmt(summary.monthValue)}` : null} />
-        <Card title="📉 ဖြတ်တောက်ငွေ" value={`${fmt(summary.totalDeductions)}`} unit="ကျပ်" color="red" />
-        <Card title="💵 ပေးရန်ကျန်ငွေ" value={`${fmt(summary.balance)}`} unit="ကျပ်" color={summary.balance > 0 ? "amber" : "green"} />
-        <Card title="✅ ပေးချေပြီးငွေ" value={`${fmt(summary.totalPaid)}`} unit="ကျပ်" color="blue" />
-        <Card title="🧾 ရရှိရမည့်ငွေ" value={`${fmt(summary.totalFinal)}`} unit="ကျပ်" color="emerald" />
+        <Card title="📄 စုစုပေါင်း Invoice များ" value={displaySummary.totalInvoices} sub={selectedFarmer ? null : `ယခုလ: ${summary.monthInvoicesCount}`} />
+        <Card title="💰 Invoice တန်ဖိုး" value={`${fmt(displaySummary.totalValue)}`} unit="ကျပ်" sub={selectedFarmer ? null : (datePreset === "month" ? `ယခုလ: ${fmt(summary.monthValue)}` : null)} />
+        <Card title="📉 ဖြတ်တောက်ငွေ" value={`${fmt(displaySummary.totalDeductions)}`} unit="ကျပ်" color="red" />
+        <Card title="💵 ပေးရန်ကျန်ငွေ" value={`${fmt(displaySummary.totalFinal - displaySummary.totalPaid)}`} unit="ကျပ်" color={displaySummary.totalFinal - displaySummary.totalPaid > 0 ? "amber" : "green"} />
+        <Card title="✅ ပေးချေပြီးငွေ" value={`${fmt(displaySummary.totalPaid)}`} unit="ကျပ်" color="blue" />
+        <Card title="🧾 ရရှိရမည့်ငွေ" value={`${fmt(displaySummary.totalFinal)}`} unit="ကျပ်" color="emerald" />
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">

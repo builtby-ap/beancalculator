@@ -16,6 +16,10 @@ export default function InvoiceSlip({ invoice, onClose }) {
   const totalValue = invoice.pricing?.base_amount || invoice.summary?.base_amount || 0;
   const totalDeductions = invoice.deductions?.total || 0;
   const finalTotal = invoice.summary?.final_amount || 0;
+  const paidAmount = invoice.paid_amount || 0;
+  const balance = finalTotal - paidAmount;
+  const isPaid = balance <= 0;
+  const isPartial = paidAmount > 0 && !isPaid;
 
   const handlePrint = () => {
     const printWindow = window.open("", "_blank");
@@ -56,6 +60,9 @@ export default function InvoiceSlip({ invoice, onClose }) {
             <span>တောင်သူအမည်: <strong>${farmerName}</strong></span>
             <span>ရက်စွဲ: <strong>${date}</strong></span>
             <span>Invoice No: <strong>${invoiceNo}</strong></span>
+            <span style="padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;${isPaid ? "background:#dcfce7;color:#166534" : isPartial ? "background:#fef3c7;color:#92400e" : "background:#fee2e2;color:#991b1b"}">
+              ${isPaid ? "ပေးချေပြီး" : isPartial ? "တစ်ပိုင်းတစ်စ" : "မပေးရသေး"}
+            </span>
           </div>
 
           <div class="section-title">ပဲစာရင်း</div>
@@ -104,6 +111,12 @@ export default function InvoiceSlip({ invoice, onClose }) {
           <div class="final-box">
             <div style="font-size:13px;color:#666;">တောင်သူရရှိမည့်ငွေ</div>
             <div class="amount">${fmt(finalTotal)} <span style="font-size:14px;">ကျပ်</span></div>
+            ${paidAmount > 0 ? `
+              <div style="margin-top:8px;padding-top:8px;border-top:1px solid #ddd;font-size:13px;">
+                <div style="display:flex;justify-content:space-between;padding:2px 0;"><span style="color:#666;">ပေးပြီးငွေ:</span><span style="color:#2563eb;font-weight:500;">${fmt(paidAmount)} ကျပ်</span></div>
+                ${balance > 0 ? `<div style="display:flex;justify-content:space-between;padding:2px 0;font-weight:700;"><span style="color:#666;">ကျန်ငွေ:</span><span style="color:#dc2626;">${fmt(balance)} ကျပ်</span></div>` : ""}
+              </div>
+            ` : ""}
           </div>
 
           <div class="footer">
@@ -161,6 +174,13 @@ export default function InvoiceSlip({ invoice, onClose }) {
           <div><span className="text-gray-500">တောင်သူအမည်:</span> <span className="font-semibold">{farmerName}</span></div>
           <div><span className="text-gray-500">ရက်စွဲ:</span> <span className="font-semibold">{date}</span></div>
           <div><span className="text-gray-500">Invoice No:</span> <span className="font-semibold">{invoiceNo}</span></div>
+          <div>
+            <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+              isPaid ? "bg-green-100 text-green-700" : isPartial ? "bg-amber-100 text-amber-700" : "bg-red-100 text-red-700"
+            }`}>
+              {isPaid ? "ပေးချေပြီး" : isPartial ? "တစ်ပိုင်းတစ်စ" : "မပေးရသေး"}
+            </span>
+          </div>
         </div>
 
         {/* Bean table */}
@@ -230,6 +250,20 @@ export default function InvoiceSlip({ invoice, onClose }) {
           <p className="text-sm text-gray-500 mb-1">တောင်သူရရှိမည့်ငွေ</p>
           <p className="text-3xl font-bold">{fmt(finalTotal)}</p>
           <p className="text-base font-semibold mt-1">ကျပ်</p>
+          {paidAmount > 0 && (
+            <div className="mt-2 pt-2 border-t border-gray-300 text-sm space-y-1">
+              <div className="flex justify-between">
+                <span className="text-gray-500">ပေးပြီးငွေ:</span>
+                <span className="text-blue-600 font-medium">{fmt(paidAmount)} ကျပ်</span>
+              </div>
+              {balance > 0 && (
+                <div className="flex justify-between">
+                  <span className="text-gray-500">ကျန်ငွေ:</span>
+                  <span className="text-red-600 font-bold">{fmt(balance)} ကျပ်</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Footer */}

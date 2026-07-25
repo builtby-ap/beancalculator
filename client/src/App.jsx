@@ -8,6 +8,7 @@ import InvoicePage from "./pages/InvoicePage";
 import Calculator from "./pages/Calculator";
 import InvoiceHistory from "./pages/InvoiceHistory";
 import BeanTypes from "./pages/BeanTypes";
+import Transactions from "./pages/Transactions";
 import ProfileCard from "./components/auth/ProfileCard";
 import ChangePasswordForm from "./components/auth/ChangePasswordForm";
 import SettingsForm from "./components/auth/SettingsForm";
@@ -42,6 +43,7 @@ export default function App() {
                 <Route path="/new-invoice" element={<InvoicePage />} />
                 <Route path="/calculator" element={<Calculator />} />
                 <Route path="/invoices" element={<InvoiceHistory />} />
+                <Route path="/transactions" element={<Transactions />} />
                 <Route path="/beans" element={<BeanTypes />} />
                 <Route path="/profile" element={<ProfileCard />} />
                 <Route path="/settings" element={<SettingsForm />} />

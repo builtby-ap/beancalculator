@@ -174,6 +174,7 @@ export default function InvoiceHistory() {
                   <th className="py-3 px-4 text-right text-gray-600 font-semibold">အခြေခံငွေ</th>
                   <th className="py-3 px-4 text-right text-gray-600 font-semibold">ဖြတ်တောက်ငွေ</th>
                   <th className="py-3 px-4 text-right text-gray-600 font-semibold">ပေးချေငွေ</th>
+                  <th className="py-3 px-4 text-center text-gray-600 font-semibold">အခြေအနေ</th>
                   <th className="py-3 px-4 text-center text-gray-600 font-semibold">လုပ်ဆောင်</th>
                 </tr>
               </thead>
@@ -203,6 +204,22 @@ export default function InvoiceHistory() {
                     </td>
                     <td className="py-3 px-4 text-right font-bold text-emerald-700">
                       {fmt(inv.summary?.final_amount || 0)} ကျပ်
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      {(() => {
+                        const final = inv.summary?.final_amount || 0;
+                        const paid = inv.paid_amount || 0;
+                        const bal = final - paid;
+                        const isPaid = bal <= 0;
+                        const isPartial = paid > 0 && !isPaid;
+                        return (
+                          <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                            isPaid ? "bg-green-100 text-green-700" : isPartial ? "bg-amber-100 text-amber-700" : "bg-red-100 text-red-700"
+                          }`}>
+                            {isPaid ? "ပေးချေပြီး" : isPartial ? "တစ်ပိုင်းတစ်စ" : "မပေးရသေး"}
+                          </span>
+                        );
+                      })()}
                     </td>
                     <td className="py-3 px-4 text-center">
                       <div className="flex gap-1 justify-center">
