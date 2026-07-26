@@ -13,10 +13,6 @@
 
 ## 📸 Screenshots
 
-### အကောင့်ဝင်ရန် (Login)
-
-![Login](screenshots/01-login.png)
-
 ### ပင်မစာမျက်နှာ (Dashboard)
 
 ![Dashboard](screenshots/02-dashboard.png)
