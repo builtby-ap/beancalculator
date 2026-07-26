@@ -15,27 +15,27 @@
 
 ### အကောင့်ဝင်ရန် (Login)
 
-![Login](screenshots/login.png)
+![Login](screenshots/01-login.png)
 
 ### ပင်မစာမျက်နှာ (Dashboard)
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/02-dashboard.png)
 
 ### ငွေရှင်းစာရင်း (Invoice Creation)
 
-![Invoice](screenshots/invoice.png)
+![Invoice](screenshots/03-invoice.png)
 
 ### တွက်ချက်စနစ် (Calculator)
 
-![Calculator](screenshots/calculator.png)
+![Calculator](screenshots/04-calculator.png)
 
 ### မှတ်တမ်းများ (Invoice History)
 
-![History](screenshots/history.png)
+![History](screenshots/05-history.png)
 
 ### ပဲအမျိုးအစားများ (Bean Types)
 
-![Beans](screenshots/beans.png)
+![Beans](screenshots/06-beans.png)
 
 ## 🛠 နည်းပညာ
 
